@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PM INTERNSHIP PORTAL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .splash-bg {
+            min-height: 100vh;
+            background: linear-gradient(120deg, #8fd3f4 0%, #84fab0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,33,0.18);
+            z-index: 1;
+        }
+        .splash-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #122e47;
+            padding: 60px 40px 40px 40px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 25px;
+            box-shadow: 0 12px 36px rgba(35,85,124,0.18);
+            min-width: 350px;
+            max-width: 500px;
+            margin: 24px;
+            animation: fadeInDown 1.2s;
+        }
+        .splash-title {
+            font-size: 2.4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            color: #1c4e80;
+            animation: popIn 1s;
+        }
+        .splash-quote {
+            font-size: 1.13rem;
+            margin: 12px 0 0 0;
+            font-style: italic;
+            color: #1c4e80;
+            opacity: 0.85;
+            animation: fadeIn 2s;
+        }
+        .splash-buttons {
+            margin-top: 36px;
+        }
+        .splash-buttons a {
+            display: inline-block;
+            padding: 12px 32px;
+            margin: 0 12px;
+            border-radius: 18px;
+            background: linear-gradient(120deg, #1c4e80, #8fd3f4);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.24s, box-shadow 0.24s;
+            box-shadow: 0 4px 18px rgba(28,78,128,0.10);
+        }
+        .splash-buttons a:hover {
+            background: linear-gradient(120deg, #233857, #3a8de7 80%);
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-32px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.92);}
+            80% { transform: scale(1.03);}
+            100% { transform: scale(1);}
+        }
+        @keyframes fadeIn {
+            from { opacity:0; }
+            to { opacity:1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-bg">
+        <div class="overlay"></div>
+        <div class="splash-content">
+            <div class="splash-title">PM INTERNSHIP PORTAL</div>
+            <div class="splash-quote">"Step into your future."</div>
+            <div class="splash-quote">"Intern, grow, succeed."</div>
+            <div class="splash-quote">"Your dream internship starts here."</div>
+            <div class="splash-buttons">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <h1>Registered Users</h1>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Skills</th>
+      <th>Learned Skills</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+      <td>{{ user['email'] or '' }}</td>
+      <td>{{ user['name'] or '' }}</td>
+      <td>{{ user['phone'] or '' }}</td>
+      <td>{{ user_skills[user['id']]|join(', ') }}</td>
+      <td>{{ user_learned_skills[user['id']]|join(', ') }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h1>Internships</h1>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <th>Title</th>
+      <th>Sector</th>
+      <th>Required Skills</th>
+      <th>Location</th>
+      <th>Salary</th>
+    </tr>
+    {% for internship in internships %}
+    <tr>
+      <td>{{ internship['title'] }}</td>
+      <td>{{ internship['sector'] }}</td>
+      <td>{{ internship['required_skills'] }}</td>
+      <td>{{ internship['location'] }}</td>
+      <td>{{ internship['salary'] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <a href="{{ url_for('add_internship') }}">Add New Internship</a>
+</body>
+</html>

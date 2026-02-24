@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Internship Recommendation Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="static/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="dashboard">
+
+
+  <!-- Toast notification container -->
+  <div id="toast"></div>
+
+  <!-- Dark mode toggle -->
+  <button id="darkModeToggle" aria-label="Toggle Dark Mode">🌙 Dark Mode</button>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="brand">PM Internship Portal</div>
+    <nav class="nav">
+      <button class="nav-btn" data-target="profile-form">👤 Profile</button>
+      <button class="nav-btn" data-target="recommendations">💡 Recommendations</button>
+      <button class="nav-btn" data-target="skill-gap">📊 Skills</button>
+      <button class="nav-btn" data-target="dashboard">🏠 Dashboard</button>
+      <button class="nav-btn" data-target="trending-courses">📚 Trending Courses</button>
+      <button class="nav-btn" data-target="coding-interview">🎤 Interview Prep</button>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  
+
+  <!-- Welcome Hero Section -->
+  <section id="welcome-section" class="section">
+    <div class="dashboard-hero-flex">
+      <div class="hero-text">
+        <div class="dashboard-title">PM INTERNSHIP PORTAL</div>
+        <div class="dashboard-subtitle">
+          Unlock your career opportunities.<br>
+          Find internships, build skills, and grow professionally!
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Back Button -->
+  <button id="backBtn" class="btn outline back-btn" title="Back">⬅ Back</button>
+
+ 
+    
+
+  <!-- Profile Form Section -->
+  <section id="profile-form" class="section">
+    <div class="card profile-grid">
+      <div class="profile-left" style="width:100%;">
+        <h2>Complete Your Profile</h2>
+        <form id="userProfileForm" enctype="multipart/form-data">
+          <label>Full Name *</label>
+          <input type="text" id="profile-name" placeholder="Full Name" />
+          <label>Email *</label>
+          <input type="email" id="profile-email" placeholder="Email" />
+          <label>Sector *</label>
+          <select id="profile-sector">
+            <option value="">Select Sector</option>
+            <option value="technology">Technology</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="finance">Finance</option>
+            <option value="education">Education</option>
+            <option value="marketing">Marketing</option>
+            <option value="manufacturing">Manufacturing</option>
+            <option value="government">Government</option>
+            <option value="retail">Retail</option>
+            <option value="other">Other</option>
+          </select>
+          <label>Mobile Number *</label>
+          <input type="text" id="profile-mobile" placeholder="+91XXXXXXXXXX" />
+          <label>Education</label>
+          <textarea id="profile-education" placeholder="Your educational background (e.g., B.Tech Data Science)"></textarea>
+          <label>Skills (comma separated) *</label>
+          <input type="text" id="profile-skills-comma" placeholder="JavaScript, Python, React" />
+          <label>Upload Resume (PDF)</label>
+          <input type="file" id="resume-input" accept="application/pdf" />
+          <div class="profile-item">
+            <h3>Certificates (merged)</h3>
+            <input type="file" id="certificates" multiple accept=".pdf,.jpg,.png">
+            <button onclick="saveCertificates()" class="btn primary">Save Certificates</button>
+            <ul id="cert-list" class="muted"></ul>
+          </div>
+          <label>Preferred Location *</label>
+          <select id="preferred-location">
+            <option value="">Select location</option>
+            <option>Remote</option>
+            <option>Bengaluru</option>
+            <option>Mumbai</option>
+            <option>Hyderabad</option>
+            <option>Chennai</option>
+            <option>Other</option>
+          </select>
+          <label>Goals</label>
+          <textarea id="profile-goals" placeholder="Your goals"></textarea>
+          <div class="error-msg" id="profile-error"></div>
+          <div style="margin-top:10px;">
+            <button class="btn primary" type="submit">Save Profile</button>
+            <button type="button" id="skip-profile" class="btn outline">Skip</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommendations Section -->
+  <section id="recommendations" class="section">
+    <h2>Recommended Internships</h2>
+    <div id="rec-grid" class="grid"></div>
+  </section>
+
+  <!-- Skill Gap Analysis Section -->
+<section id="skill-gap" class="section">
+  <h2>Skill Gap Analysis</h2>
+  <div class="skills-cards-container">
+
+    <!-- Current Skills Card -->
+    <div class="skills-card">
+      <h3>Your Skills ✅</h3>
+      <div class="badge-container" id="user-skills-list">
+        <!-- Badges for current skills will be rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Missing Skills Card -->
+    <div class="skills-card missing-card" id="missing-skills-cards">
+      <!-- Missing skills and links will be inserted here via JS -->
+    </div>
+
+  </div>
+
+  <div id="roadmap-list" style="margin-top:28px;"></div>
+
+
+    <!-- Missing Skills Cards (insert dynamically via JS for each missing skill) -->
+    <div class="skills-card missing-card" id="missing-skills-cards">
+      <!-- Each missing skill's card is inserted here via JS -->
+    </div>
+  </div>
+
+</section>
+
+
+  <!-- Progress Tracker Section -->
+  <section id="tracker" class="section">
+    <h2>Progress Tracker</h2>
+    <div id="resources" class="tracker-list"></div>
+    <div class="progress-overall">
+      Overall Progress:
+      <div class="progress-bar"><div id="overallProgress"></div></div>
+    </div>
+  </section>
+
+  <!-- Dashboard Section -->
+  <section id="dashboard" class="section">
+    <h2>Dashboard Overview</h2>
+    <div class="dashboard-cards">
+      <div class="card" id="dash-profile"></div>
+      <div class="card" id="dash-recs"></div>
+      <div class="card" id="dash-skills"></div>
+      <div class="card" id="app-tracker"></div>
+    </div>
+    <div style="max-width:1100px;margin:16px auto;">
+      <h3>Internship Readiness</h3>
+      <div class="progress-bar"><div id="readinessProgress"></div></div>
+      <div id="readiness-label" style="margin-top:8px;"></div>
+    </div>
+  </section>
+
+  <!-- Trending Courses Section -->
+  <section id="trending-courses" class="section">
+    <h2>Trending Courses</h2>
+    <div id="trending-list" class="grid">
+      <div class="card">
+        <h3>🚀 Full-Stack Web Development</h3>
+        <p>Learn HTML, CSS, JavaScript, React, Node.js, and MongoDB.</p>
+        <button class="btn primary">Enroll</button>
+      </div>
+      <div class="card">
+        <h3>🤖 Machine Learning & AI</h3>
+        <p>Hands-on with Python, TensorFlow, and real-world projects.</p>
+        <button class="btn primary">Enroll</button>
+      </div>
+      <div class="card">
+        <h3>☁️ Cloud Computing with AWS</h3>
+        <p>Master cloud infrastructure, DevOps, and AWS certification prep.</p>
+        <button class="btn primary">Enroll</button>
+      </div>
+      <div class="card">
+        <h3>📱 Mobile App Development</h3>
+        <p>Build apps with Flutter & React Native for Android/iOS.</p>
+        <button class="btn primary">Enroll</button>
+      </div>
+      <div class="card">
+        <h3>🛡 Cybersecurity Fundamentals</h3>
+        <p>Network security, ethical hacking, and secure coding practices.</p>
+        <button class="btn primary">Enroll</button>
+      </div>
+      <div class="card">
+        <h3>📊 Data Analytics with Power BI</h3>
+        <p>Analyze and visualize data for business insights.</p>
+        <button class="btn primary">Enroll</button>
+      </div>
+      <div class="card">
+        <h3>🧑‍💼 Product Management</h3>
+        <p>Learn roadmap planning, agile, and product strategy.</p>
+        <button class="btn primary">Enroll</button>
+      </div>
+      <div class="card">
+        <h3>🎨 UI/UX Design</h3>
+        <p>Design intuitive interfaces with Figma and Adobe XD.</p>
+        <button class="btn primary">Enroll</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Tracker Section -->
+  <section id="application-tracker" class="section">
+    <h2>Your Applications</h2>
+    <div id="application-list"></div>
+  </section>
+
+  <!-- Coding Interview Section -->
+  <section id="coding-interview" class="section">
+    <h2>🎤 Interview Preparation</h2>
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="coding">Coding</button>
+      <button class="tab-btn" data-tab="aptitude">Aptitude</button>
+      <button class="tab-btn" data-tab="hr">HR</button>
+      <button class="tab-btn" data-tab="mock-interview">Mock Interview</button>
+    </div>
+    <div class="tab-content">
+      <div class="tab-panel" id="tab-coding">
+        <p id="coding-question"></p>
+        <div class="coding-controls">
+          <button onclick="prevCQ()" class="btn outline">⬅ Prev</button>
+          <button onclick="nextCQ()" class="btn primary">Next ➡</button>
+        </div>
+        <textarea id="coding-answer" placeholder="Write your solution here..."></textarea>
+      </div>
+      <div class="tab-panel hidden" id="tab-aptitude">
+        <p id="aptitude-question"></p>
+        <div class="coding-controls">
+          <button onclick="prevAQ()" class="btn outline">⬅ Prev</button>
+          <button onclick="nextAQ()" class="btn primary">Next ➡</button>
+        </div>
+        <input type="text" id="aptitude-answer" placeholder="Write your answer here..." />
+      </div>
+      <div class="tab-panel hidden" id="tab-hr">
+        <p id="hr-question"></p>
+        <div class="coding-controls">
+          <button onclick="prevHQ()" class="btn outline">⬅ Prev</button>
+          <button onclick="nextHQ()" class="btn primary">Next ➡</button>
+        </div>
+        <textarea id="hr-answer" placeholder="Type your response here..."></textarea>
+      </div>
+      <div class="tab-panel hidden" id="tab-mock-interview">
+        <div class="mock-container">
+          <h3>Current Question:</h3>
+          <p id="mock-question" class="mock-question"></p>
+          <div class="mock-controls">
+            <button id="nextMockBtn" class="btn primary">Next Question</button>
+          </div>
+          <textarea id="mock-answer" class="mock-answer" placeholder="Type your answer here..."></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz-section" class="section">
+    <div class="card">
+      <h2 id="quiz-title"></h2>
+      <div id="quiz-questions-container"></div>
+      <div id="quiz-result" style="display:none; margin-top: 15px;"></div>
+      <button id="quiz-submit-btn" class="btn primary" style="margin-top:10px;">Submit Quiz</button>
+      <button id="quiz-apply-btn" class="btn primary" style="display:none; margin-top:10px;">Apply Now</button>
+    </div>
+  </section>
+
+  <script src="static/script.js"></script>
+  
+</body>
+</html>

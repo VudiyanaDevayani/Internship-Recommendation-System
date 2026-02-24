@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | PM INTERNSHIP PORTAL</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg,#f8fafc 0%, #e8f4fa 100%);
+        }
+        .welcome-section {
+            max-width: 980px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .hero-msg {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #234685;
+            margin-top: 60px;
+            margin-bottom: 14px;
+        }
+        .hero-sub {
+            font-size: 1.18rem;
+            color: #2e3963;
+            margin-bottom: 34px;
+        }
+        .dashboard-illustration {
+            margin: 0 auto 36px auto;
+            height: 200px;
+            /* background: url('https://www.svgrepo.com/show/331985/people-together.svg') no-repeat center center/contain; */
+        }
+        .dashboard-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+        }
+        .dashboard-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 6px 22px rgba(30,30,70,0.12);
+            padding: 32px 28px 24px 28px;
+            max-width: 280px;
+            transition: transform 0.13s;
+            text-align: left;
+            position: relative;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 32px rgba(55,100,170,0.12);
+        }
+        .dash-icon {
+            width: 46px;
+            height: 46px;
+            margin-bottom: 10px;
+        }
+        .dash-title {
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: #1c3264;
+            margin-bottom: 7px;
+        }
+        .dash-desc {
+            font-size: 0.97rem;
+            color: #3b4c68;
+        }
+        .dash-btn {
+            display: block;
+            margin: 18px 0 0 0;
+            background: linear-gradient(120deg,#234685,#a4e8e0 66%);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 0;
+            border-radius: 12px;
+            text-align: center;
+            letter-spacing: 1px;
+            transition: background 0.24s;
+        }
+        .dash-btn:hover {
+            background: linear-gradient(120deg,#3075ae,#2fd6c7 90%);
+        }
+        @media (max-width: 830px) {
+            .dashboard-options { flex-direction: column; align-items: center; gap: 26px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-section">
+        <div class="hero-msg">
+            Make your mark on<br>the future of internships.
+        </div>
+        <div class="hero-sub">
+            <strong>PM Internship Portal</strong> opens many paths.<br>
+            Choose an option to begin your journey.
+        </div>
+        <div class="dashboard-illustration"></div>
+        <div class="dashboard-options">
+            <div class="dashboard-card">
+                <img class="dash-icon" src="https://cdn-icons-png.flaticon.com/512/2422/2422315.png" alt="Profile">
+                <div class="dash-title">Profile</div>
+                <div class="dash-desc">Update your information and preferences.</div>
+                <a href="profile.html" class="dash-btn">View Profile</a>
+            </div>
+            <div class="dashboard-card">
+                <img class="dash-icon" src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Find Internships">
+                <div class="dash-title">Find Internships</div>
+                <div class="dash-desc">Explore recommended internship roles based on your skills.</div>
+                <a href="internships.html" class="dash-btn">Explore Roles</a>
+            </div>
+            <div class="dashboard-card">
+                <img class="dash-icon" src="https://cdn-icons-png.flaticon.com/512/2892/2892469.png" alt="Skill Gap">
+                <div class="dash-title">Skill Gap Analysis</div>
+                <div class="dash-desc">Identify and close gaps to be job-ready faster.</div>
+                <a href="skills.html" class="dash-btn">Run Analysis</a>
+            </div>
+            <div class="dashboard-card">
+                <img class="dash-icon" src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png" alt="Application Tracker">
+                <div class="dash-title">Application Tracker</div>
+                <div class="dash-desc">Track your applications and results, all in one place.</div>
+                <a href="applications.html" class="dash-btn">View Tracker</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

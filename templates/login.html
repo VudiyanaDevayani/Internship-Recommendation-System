@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login | PM INTERNSHIP PORTAL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        body {
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: rgba(255,255,255,0.97);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(40,40,80,0.16);
+            padding: 48px 38px 32px 38px;
+            min-width: 350px;
+            max-width: 420px;
+            animation: fadeInDown 1s;
+        }
+        .login-title {
+            font-size: 1.73rem;
+            font-weight: bold;
+            color: #654ea3;
+            margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .login-form label {
+            display: block;
+            color: #2e3963;
+            margin-top: 22px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .login-form input[type=email],
+        .login-form input[type=password],
+        .login-form select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+            background: #f8fafc;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            transition: border 0.2s;
+        }
+        .login-form input:focus,
+        .login-form select:focus {
+            border-color: #654ea3;
+            outline: none;
+        }
+        .login-form button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 13px 0;
+            box-shadow: 0 4px 12px rgba(101,78,163,0.12);
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(110deg, #654ea3, #eaafc8 90%);
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.09rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.24s;
+        }
+        .login-form button:hover {
+            background: linear-gradient(110deg, #4286f4 20%, #654ea3 100%);
+        }
+        .register-link {
+            margin-top: 18px;
+            text-align: center;
+            display: block;
+            color: #4286f4;
+            text-decoration: none;
+        }
+        .register-link:hover {
+            text-decoration: underline;
+        }
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-32px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <form class="login-card login-form" method="POST" action="/login">
+        <div class="login-title">Login to PM Internship Portal</div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required/>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required/>
+        
+        <!-- <label for="role">Login as</label>
+        <select id="role" name="role" required>
+            <option value="user" selected>User</option>
+            <option value="admin">Admin</option>
+        </select> -->
+        
+        <button type="submit">Login</button>
+        <a class="register-link" href="/register">Don't have an account? Register here.</a>
+    </form>
+</body>
+</html>

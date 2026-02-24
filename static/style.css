@@ -1,0 +1,771 @@
+/* Core styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        #f0f4f8,
+        #f0f4f8 10px,
+        #e6ecf3 10px,
+        #e6ecf3 20px
+    );
+    color: #333;
+   
+}
+
+/* Blurred background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('pic.jpg') no-repeat center center/cover;
+    filter: blur(10px);
+    z-index: -1; /* stays behind everything */
+}
+
+/* Topbar */
+.topbar {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    align-items: center;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.nav button {
+    background: transparent;
+    border: none;
+    color: white;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+/* Sections */
+.section {
+    display: none;
+    padding: 1.5rem;
+}
+
+.auth-card,
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    margin: 1rem auto;
+    max-width: 1100px;
+}
+
+.auth-card {
+    max-width: 640px;
+}
+
+/* Profile grid */
+.profile-grid {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.profile-left {
+    flex: 1;
+    min-width: 360px;
+}
+
+.profile-right {
+    flex: 1;
+    min-width: 340px;
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #d9e0ec;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.btn.primary {
+    background: #2575fc;
+    color: white;
+}
+
+.btn.outline {
+    background: transparent;
+    color: #2575fc;
+    border: 2px solid #2575fc;
+}
+
+/* Helpers */
+.label {
+    font-weight: 600;
+    margin-top: 6px;
+    display: block;
+}
+
+.link {
+    color: #2575fc;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.error-msg {
+    color: #d9534f;
+    margin-top: 6px;
+    font-size: 0.9rem;
+}
+
+/* Grid for recommendations */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 12px;
+}
+
+/* Internship Cards */
+.internship-card {
+    background: linear-gradient(180deg, #fff, #f0faff);
+    padding: 16px 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.internship-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Skill Badge */
+.skill-badge {
+    display: inline-block;
+    background: #d0e8ff;
+    color: #2575fc;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    margin: 3px 4px 3px 0;
+    user-select: none;
+}
+
+/* Upload area */
+#uploads-area {
+    margin-top: 8px;
+}
+
+/* Password Visibility Toggle */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 44px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.05rem;
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+/* Progress Bars */
+.progress-bar {
+    width: 100%;
+    background: #eee;
+    border-radius: 8px;
+    height: 20px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar > div {
+    height: 100%;
+    background: #2575fc;
+    color: white;
+    text-align: center;
+    transition: width 300ms ease;
+}
+
+/* Roadmap */
+.roadmap-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 8px;
+}
+
+.roadmap-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.roadmap-left input[type="checkbox"] {
+    transform: scale(1.15);
+}
+
+/* Trending Courses - horizontal scroll */
+#trending-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 12px;
+}
+
+.course-card {
+    min-width: 250px;
+    border-radius: 12px;
+    padding: 20px;
+    background: linear-gradient(180deg, #fff, #f0faff);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    margin-right: 15px;
+}
+
+.course-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Back button */
+.back-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 900;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background-color: white;
+    border: 2px solid #2575fc;
+    color: #2575fc;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .profile-grid {
+        flex-direction: column;
+    }
+
+    .auth-card,
+    .card {
+        margin: 12px;
+    }
+}
+
+/* Dark mode */
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .topbar {
+    background: linear-gradient(to right, #0d0d0d, #1a1a1a);
+    color: #e0e0e0;
+}
+
+body.dark-mode .auth-card,
+body.dark-mode .card,
+body.dark-mode .internship-card,
+body.dark-mode .course-card,
+body.dark-mode .roadmap-item {
+    background: #1e1e1e;
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.1);
+    color: #ccc;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background: #303030;
+    color: #ddd;
+    border-color: #555;
+}
+
+body.dark-mode .btn.primary {
+    background: #3b82f6;
+    color: white;
+}
+
+body.dark-mode .btn.outline {
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+body.dark-mode .badge {
+    background: #3b82f6;
+    color: white;
+}
+
+body.dark-mode a,
+body.dark-mode .link {
+    color: #64b5f6;
+}
+
+/* Dark mode toggle button */
+#darkModeToggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: #3b82f6;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Accessibility focus */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Tabs */
+.tab-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.tab-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #f0f4f8;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tab-btn.active {
+    background: #2575fc;
+    color: white;
+}
+
+.tab-panel.hidden {
+    display: none;
+}
+#skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  margin-top: 20px;
+  max-width: 1000px;
+}
+
+#skills-container > div {
+  flex: 1 1 300px;
+  background: #f9fbff;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.skill-badge {
+  display: inline-block;
+  background: #d0e8ff;
+  color: #2575fc;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  cursor: default;
+  user-select: none;
+}
+
+.skill-badge.missing {
+  background: #ffd6d6;
+  color: #d9534f;
+}
+
+.progress-bar {
+  background: #eee;
+  border-radius: 8px;
+  height: 20px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progress-bar > div {
+  height: 100%;
+  background: #2575fc;
+  transition: width 300ms ease;
+}
+@media (max-width: 900px) {
+  #trending-list {
+    gap: 12px !important;
+    justify-content: center !important;
+  }
+  .course-card {
+    min-width:180px !important;
+    max-width:98vw !important;
+    height:auto !important;
+    padding:16px 10px !important;
+  }
+}
+#trending-list {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+
+.course-card {
+  background: linear-gradient(120deg, #f7faff 70%, #e8f0fe 100%);
+  border: 1.7px solid #e1e7ee;
+  border-radius: 17px;
+  box-shadow: 0 4px 18px rgba(57,100,200,0.07), 0 1.5px 6px rgba(0,0,0,.04);
+  transition: box-shadow 0.26s, transform 0.19s, border-color 0.19s;
+  padding: 20px 19px 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 290px;
+  min-width: 210px;
+  height: 192px;
+  position: relative;
+}
+
+.course-card:hover {
+  box-shadow: 0 12px 32px rgba(33,80,175,0.16), 0 2.5px 12px rgba(0,0,0,.06);
+  transform: translateY(-7px) scale(1.018);
+  border-color: #2575fc;
+}
+
+.course-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.22rem;
+  color: #204573;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.course-card p {
+  margin: 0 0 13px 0;
+  font-size: 1.03rem;
+  color: #3d5167;
+}
+
+.course-card a.link {
+  margin-top: auto;
+  color: #277cff;
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 1.04rem;
+  transition: color 0.17s;
+  border-radius: 7px;
+  padding: 3px 5px;
+  display: inline-block;
+}
+
+.course-card a.link:hover {
+  color: #174ea6;
+  background: #e9f7ff;
+}
+
+@media (max-width: 1000px) {
+  #trending-list {
+    gap: 12px !important;
+    justify-content: center !important;
+  }
+  .course-card {
+    min-width: 140px !important;
+    max-width: 97vw !important;
+    height: auto !important;
+    padding: 13px 7px !important;
+    margin-bottom: 7px !important;
+  }
+}
+body.dashboard {
+  background: linear-gradient(115deg, #89f7fe 0%, #66a6ff 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.dashboard-hero {
+  text-align: center;
+  padding: 60px 20px 30px 20px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 24px;
+  max-width: 750px;
+  margin: 48px auto 40px auto;
+  box-shadow: 0 8px 32px rgba(25,85,192,0.10);
+  position: relative;
+}
+
+.dashboard-title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #2575fc;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  line-height: 1.1;
+  text-shadow: 2px 5px 17px #66a6ff55;
+}
+
+.dashboard-subtitle {
+  font-size: 1.24rem;
+  color: #234685;
+  font-weight: 500;
+}
+
+.dashboard-hero::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -36px; width: 100%; height: 120px;
+  background: url('https://www.svgrepo.com/show/373715/job-search-career-internship.svg') no-repeat center bottom;
+  background-size: contain;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+}
+body.dashboard {
+  /* Beautiful career-themed Unsplash image. You can swap this for any free, high-res image you like. */
+  background: linear-gradient(110deg,rgba(0,0,0,0.18),rgba(80,180,255,0.07)), url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+
+  background-size: cover;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+}
+.dashboard-hero-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  padding: 80px 30px 40px 30px;
+  max-width: 1100px;
+  margin: 48px auto 40px auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 36px;
+  box-shadow: 0 8px 32px rgba(25,85,192,0.13);
+}
+
+.hero-text {
+  flex: 1 1 320px;
+  min-width: 300px;
+  text-align: left;
+}
+.dashboard-title {
+  font-size: 2.7rem;
+  font-weight: 900;
+  color: #2575fc;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+  line-height: 1.09;
+  text-shadow: 2px 5px 17px #66a6ff35;
+}
+.dashboard-subtitle {
+  font-size: 1.2rem;
+  color: #22293d;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.hero-illustration {
+  flex: 1 1 280px;
+  min-width: 200px;
+  max-width: 340px;
+  width: 27vw;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 3px 22px 0 #8fd3f470;
+  background: white;
+}
+@media (max-width: 900px) {
+  .dashboard-hero-flex {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 18px;
+    padding: 36px 3vw 22px 3vw;
+  }
+  .hero-illustration {
+    max-width: 94vw;
+  }
+  .hero-text {text-align:center;}
+}
+body.dashboard-full-bg {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-navbar {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.dashboard-hero-full {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  backdrop-filter: brightness(0.7);
+}
+
+.dashboard-hero-full h1 {
+  font-size: 3.7rem;
+  font-weight: 900;
+  margin-bottom: 0.3em;
+  text-shadow: 0 4px 14px #000000aa;
+  letter-spacing: 3px;
+}
+
+.dashboard-hero-full p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  max-width: 600px;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px #000000aa;
+}
+
+@media (max-width: 768px) {
+  .dashboard-hero-full h1 {
+    font-size: 2.6rem;
+  }
+
+  .dashboard-hero-full p {
+    font-size: 1.1rem;
+  }
+}
+.skill-gap-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 40px auto 0 auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 22px rgba(44,62,80,0.10);
+  padding: 36px 32px 28px 32px;
+}
+.user-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.skill-badge {
+  background: #e6f0fa;
+  color: #2575fc;
+  padding: 7px 14px;
+  border-radius: 18px;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin: 2px;
+}
+.skill-badge.missing {
+  background: #fde8e8;
+  color: #d7263d;
+  font-weight: bold;
+}
+.missing-skill-block {
+  background: #fafbff;
+  border: 1.6px solid #e3e8ee;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  padding: 20px 16px 18px 18px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.03);
+}
+.missing-skill-header {
+  margin-bottom: 8px;
+  font-size: 1.08em;
+}
+.suggested-link {
+  font-size: 0.99em;
+  text-decoration: underline;
+  color: #2575fc;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.btn {
+  background: #2575fc;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 7px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1em;
+}
+.btn.outline {
+  background: none;
+  color: #2575fc;
+  border: 1.5px solid #2575fc;
+}
+@media (max-width: 700px) {
+  .skill-gap-container {
+    padding: 18px 6px;
+  }
+}
