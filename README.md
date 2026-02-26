@@ -1,5 +1,6 @@
 1️⃣ Project Title
 AI-Based PM Internship Portal
+
 2️⃣ Short Description 
 An intelligent web application that recommends relevant Project Management internships based on user skills and preferences.
 3️⃣ Problem Statement
@@ -44,8 +45,4 @@ Example:
 🔟 Developed By
 ## 👩‍💻 Developed By
 Devayani & Team
-⭐ Bonus Sections 
-## 🎯 Objective
-## 🧠 Recommendation Logic
-## 🔐 Authentication Flow
-## 🌐 Demo
+
